@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { gql } from 'apollo-boost';
 import { useMutation } from 'react-apollo';
+import { withRouter } from 'react-router';
 
 const CREATE_LINK = gql`
   mutation PostMutation($description: String!, $url: String!) {
@@ -13,9 +14,11 @@ const CREATE_LINK = gql`
   }
 `
 
-const CreateLink = () => {
+const CreateLink = ({ history }) => {
 
-	const [createLink] = useMutation(CREATE_LINK);
+	const [createLink] = useMutation(CREATE_LINK, {
+		onCompleted: () => history.push('/')
+ 	});
 
 	const [description, setDescription] = useState('');
 	const [url, setUrl] = useState('');
@@ -52,4 +55,4 @@ const CreateLink = () => {
 	);
 }
 
-export default CreateLink;
+export default withRouter(CreateLink);
