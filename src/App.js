@@ -3,6 +3,7 @@ import { Switch, Route } from 'react-router';
 import LinkList from './components/LinkList/LinkList.component';
 import CreateLink from './components/CreateLink/CreateLink.component';
 import Header from './components/Header/Header.component';
+import Login from './components/Login/Login.component';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={LinkList} />
           <Route exact path="/create" component={CreateLink} />
+					<Route exact path="/login" component={Login} />
         </Switch>
       </div>
     </div>
